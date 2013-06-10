@@ -50,5 +50,6 @@ void glSetupFuncs(void);
 void reset(void);
 void gear( GLfloat inner_radius, GLfloat outer_radius, GLfloat width,GLint teeth, GLfloat tooth_depth ); 
 void silinder1(GLfloat radius,GLfloat length); 
+void silinder2(GLfloat radius,GLfloat length); 
 void help(void); 
 
