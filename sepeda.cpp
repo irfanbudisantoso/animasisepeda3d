@@ -29,6 +29,10 @@ void rangka()
    glPushMatrix(); 
    glColor3f(0.2f,0.7f,0.2f); 
    glPushMatrix(); 
+   glPushMatrix(); 
+         glTranslatef(0.0f,0.0f,-OFSET_RODA); 
+         Silinder2(DMT_ROD,LEN_RODA); 
+      glPopMatrix(); 
             glTranslatef(0.0f,0.0f,0.06f); 
             glRotatef(-2*sudutpedal,0.0f,0.0f,1.0f); 
         gear(0.08f,0.3f,0.03f,30,0.03f); 
