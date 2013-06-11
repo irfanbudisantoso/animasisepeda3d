@@ -38,7 +38,7 @@ void rangka()
          Silinder1(0.08f,0.32f); 
       glPopMatrix(); 
 	    glPushMatrix(); 
-         glTranslatef(0.0f,0.0f,-OFSET_RODA); 
+          glTranslatef(0.0f,0.0f,-OFSET_RODA); 
          Silinder2(DMT_ROD,LEN_RODA); 
       glPopMatrix(); 
       glPopMatrix();   
