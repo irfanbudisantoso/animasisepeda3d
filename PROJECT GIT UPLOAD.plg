@@ -6,18 +6,18 @@
 --------------------Configuration: PROJECT GIT UPLOAD - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\Tri-PC\AppData\Local\Temp\RSPB7D.tmp" with contents
+Creating temporary file "C:\Users\Tri-PC\AppData\Local\Temp\RSP5D2A.tmp" with contents
 [
 /nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/PROJECT GIT UPLOAD.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
 "E:\OPEN GL PROJECT\ppp_aplikasisepeda3d\sepeda.cpp"
 ]
-Creating command line "cl.exe @"C:\Users\Tri-PC\AppData\Local\Temp\RSPB7D.tmp"" 
-Creating temporary file "C:\Users\Tri-PC\AppData\Local\Temp\RSPB7E.tmp" with contents
+Creating command line "cl.exe @"C:\Users\Tri-PC\AppData\Local\Temp\RSP5D2A.tmp"" 
+Creating temporary file "C:\Users\Tri-PC\AppData\Local\Temp\RSP5D3B.tmp" with contents
 [
 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/PROJECT GIT UPLOAD.pdb" /debug /machine:I386 /out:"Debug/PROJECT GIT UPLOAD.exe" /pdbtype:sept 
 ".\Debug\sepeda.obj"
 ]
-Creating command line "link.exe @"C:\Users\Tri-PC\AppData\Local\Temp\RSPB7E.tmp""
+Creating command line "link.exe @"C:\Users\Tri-PC\AppData\Local\Temp\RSP5D3B.tmp""
 <h3>Output Window</h3>
 Compiling...
 sepeda.cpp
