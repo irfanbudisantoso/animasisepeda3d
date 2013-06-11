@@ -24,7 +24,7 @@ void Silinder2(GLfloat radius,GLfloat length)
 } 
 void rangka() 
 { 
-   glColor3f(1.0f,0.0f,0.0f); 
+    glColor3f(1.0f,0.0f,0.0f); 
    glPushMatrix();
    glPushMatrix(); 
    glColor3f(0.2f,0.7f,0.2f); 
@@ -33,7 +33,7 @@ void rangka()
             glRotatef(-2*sudutpedal,0.0f,0.0f,1.0f); 
             gear(0.08f,0.3f,0.03f,30,0.03f); 
          glPopMatrix(); 
-		 glColor3f(1.0f,0.0f,0.0f);  
+		   glColor3f(1.0f,0.0f,0.0f);  
          glTranslatef(0.0f,0.0f,-0.2f); 
          Silinder1(0.08f,0.32f); 
       glPopMatrix(); 
