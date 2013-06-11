@@ -31,7 +31,7 @@ void rangka()
    glPushMatrix(); 
             glTranslatef(0.0f,0.0f,0.06f); 
             glRotatef(-2*sudutpedal,0.0f,0.0f,1.0f); 
-            gear(0.08f,0.3f,0.03f,30,0.03f); 
+        gear(0.08f,0.3f,0.03f,30,0.03f); 
          glPopMatrix(); 
 		    glColor3f(1.0f,0.0f,0.0f);  
          glTranslatef(0.0f,0.0f,-0.2f); 
