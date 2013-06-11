@@ -39,7 +39,7 @@ void rangka()
          glPopMatrix(); 
 		    glColor3f(1.0f,0.0f,0.0f);  
          glTranslatef(0.0f,0.0f,-0.2f); 
-         Silinder1(0.08f,0.32f); 
+          Silinder1(0.08f,0.32f); 
       glPopMatrix(); 
 	    glPushMatrix(); 
          glTranslatef(0.0f,0.0f,-OFSET_RODA); 
