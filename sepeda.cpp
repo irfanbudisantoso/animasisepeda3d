@@ -10,7 +10,7 @@ void Silinder1(GLfloat radius,GLfloat length)
 { 
    GLUquadricObj *cylinder; 
    cylinder=gluNewQuadric(); 
-   glPushMatrix();    
+   glPushMatrix(); 	
       glTranslatef(0.0f,0.0f,0.0f); 
       gluCylinder(cylinder,radius,radius,length,15,5); 
    glPopMatrix(); 
@@ -24,22 +24,18 @@ void Silinder2(GLfloat radius,GLfloat length)
 } 
 void rangka() 
 { 
-    glColor3f(1.0f,0.0f,0.0f); 
+   glColor3f(1.0f,0.0f,0.0f); 
    glPushMatrix();
    glPushMatrix(); 
    glColor3f(0.2f,0.7f,0.2f); 
    glPushMatrix(); 
-   glPushMatrix(); 
-         glTranslatef(0.0f,0.0f,-OFSET_RODA); 
-         Silinder2(DMT_ROD,LEN_RODA); 
-      glPopMatrix(); 
             glTranslatef(0.0f,0.0f,0.06f); 
             glRotatef(-2*sudutpedal,0.0f,0.0f,1.0f); 
-        gear(0.08f,0.3f,0.03f,30,0.03f); 
+            gear(0.08f,0.3f,0.03f,30,0.03f); 
          glPopMatrix(); 
-		    glColor3f(1.0f,0.0f,0.0f);  
+		 glColor3f(1.0f,0.0f,0.0f); //warna rumah 
          glTranslatef(0.0f,0.0f,-0.2f); 
-          Silinder1(0.08f,0.32f); 
+         Silinder1(0.08f,0.32f); 
       glPopMatrix(); 
 	    glPushMatrix(); 
          glTranslatef(0.0f,0.0f,-OFSET_RODA); 
