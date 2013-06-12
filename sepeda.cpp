@@ -113,7 +113,6 @@ glRotatef(SUDUT_TENGAH-SUDUT_KANAN,0.0f,0.0f,1.0f);
       glRotatef(-SUDUT_TENGAH,0.0f,0.0f,1.0f); 
       glScalef(0.3f,DMT_ROD,0.25f); 
       jok(); 
-<<<<<<< HEAD
 glColor3f(1.0f,0.0f,0.0f); 
    glPopMatrix(); 
 
@@ -129,12 +128,6 @@ glColor3f(1.0f,0.0f,0.0f);
          Silinder2(DMT_ROD,DMT_RODA+LB_BAN); 
       glPopMatrix(); 
    glPopMatrix();
-
-
-
-
-=======
->>>>>>> 0aaa3b16f4d1169b43b835cb3e3d7a2c88225f8d
 
 	    glPushMatrix(); 
          glTranslatef(0.0f,0.0f,-OFSET_RODA); 
