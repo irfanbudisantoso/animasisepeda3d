@@ -40,6 +40,8 @@ void rangka()
 
 glRotatef(SUDUT_KANAN,0.0f,0.0f,1.0f); 
       Silinder2(DMT_ROD,1.67f); 
+glRotatef(SUDUT_TENGAH-SUDUT_KANAN,0.0f,0.0f,1.0f); 
+      Silinder2(DMT_ROD,TENGAH_ROD); 
 
 	    glPushMatrix(); 
          glTranslatef(0.0f,0.0f,-OFSET_RODA); 
