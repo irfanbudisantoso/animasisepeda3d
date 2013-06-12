@@ -33,14 +33,19 @@ void rangka()
             glRotatef(-2*sudutpedal,0.0f,0.0f,1.0f); 
             gear(0.08f,0.3f,0.03f,30,0.03f); 
          glPopMatrix(); 
-		 glColor3f(1.0f,0.0f,0.0f); //warna rumah 
+		 glColor3f(1.0f,0.0f,0.0f); 
          glTranslatef(0.0f,0.0f,-0.2f); 
          Silinder1(0.08f,0.32f); 
       glPopMatrix(); 
+
+glRotatef(SUDUT_KANAN,0.0f,0.0f,1.0f); 
+      Silinder2(DMT_ROD,1.67f); 
+
 	    glPushMatrix(); 
-          glTranslatef(0.0f,0.0f,-OFSET_RODA); 
+         glTranslatef(0.0f,0.0f,-OFSET_RODA); 
          Silinder2(DMT_ROD,LEN_RODA); 
       glPopMatrix(); 
+
       glPopMatrix();   
    glPopMatrix(); 
 } 
