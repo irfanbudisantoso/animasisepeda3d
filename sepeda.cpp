@@ -1,4 +1,70 @@
 #include "sepeda.h" 
+void jok() 
+{ 
+   glBegin(GL_POLYGON); 
+      glVertex3f(-0.1f, 1.0f, -0.5f); 
+      glVertex3f(   1.0f, 1.0f, -0.3f); 
+      glVertex3f( 1.0f, 1.0f,  0.3f); 
+      glVertex3f(-0.1f, 1.0f,  0.5f); 
+      glVertex3f(-0.5f, 1.0f,  1.0f); 
+      glVertex3f(-1.0f, 1.0f,  1.0f); 
+      glVertex3f(-1.0f, 1.0f, -1.0f); 
+      glVertex3f(-0.5f, 1.0f, -1.0f); 
+   glEnd(); 
+   glBegin(GL_POLYGON); 
+      glVertex3f(-0.1f, -1.0f, -0.5f); 
+      glVertex3f(   1.0f, -1.0f, -0.3f); 
+      glVertex3f( 1.0f, -1.0f,  0.3f); 
+      glVertex3f(-0.1f, -1.0f,  0.5f); 
+      glVertex3f(-0.5f, -1.0f,  1.0f); 
+      glVertex3f(-1.0f, -1.0f,  1.0f); 
+      glVertex3f(-1.0f, -1.0f, -1.0f); 
+      glVertex3f(-0.5f, -1.0f, -1.0f); 
+   glEnd(); 
+   glBegin(GL_QUADS); 
+      glVertex3f(1.0f,1.0f,-0.3f); 
+      glVertex3f(1.0f,1.0f,0.3f); 
+      glVertex3f(1.0f,-1.0f,0.3f); 
+      glVertex3f(1.0f,-1.0f,-0.3f); 
+
+      glVertex3f(1.0f,1.0f,0.3f); 
+      glVertex3f(-0.1f,1.0f,0.5f); 
+      glVertex3f(-0.1f,-1.0f,0.5f); 
+      glVertex3f(1.0f,-1.0f,0.3f); 
+
+      glVertex3f(1.0f,1.0f,-0.3f); 
+      glVertex3f(-0.1f,1.0f,-0.5f); 
+      glVertex3f(-0.1f,-1.0f,-0.5f); 
+      glVertex3f(1.0f,-1.0f,-0.3f); 
+
+      glVertex3f(-0.1f,1.0f,0.5f); 
+      glVertex3f(-0.5f,1.0f,1.0f); 
+      glVertex3f(-0.5f,-1.0f,1.0f); 
+      glVertex3f(-0.1f,-1.0f,0.5f); 
+
+      glVertex3f(-0.1f,1.0f,-0.5f); 
+      glVertex3f(-0.5f,1.0f,-1.0f); 
+      glVertex3f(-0.5f,-1.0f,-1.0f); 
+      glVertex3f(-0.1f,-1.0f,-0.5f); 
+
+      glVertex3f(-0.5f,1.0f,1.0f); 
+      glVertex3f(-1.0f,1.0f,1.0f); 
+      glVertex3f(-1.0f,-1.0f,1.0f); 
+      glVertex3f(-0.5f,-1.0f,1.0f); 
+
+      glVertex3f(-0.5f,1.0f,-1.0f); 
+      glVertex3f(-1.0f,1.0f,-1.0f); 
+      glVertex3f(-1.0f,-1.0f,-1.0f); 
+      glVertex3f(-0.5f,-1.0f,-1.0f); 
+
+      glVertex3f(-1.0f,1.0f,1.0f); 
+      glVertex3f(-1.0f,1.0f,-1.0f); 
+      glVertex3f(-1.0f,-1.0f,-1.0f); 
+      glVertex3f(-1.0f,-1.0f,1.0f); 
+
+   glEnd(); 
+} 
+
 GLfloat angleSum(GLfloat a, GLfloat b) 
 { 
   a += b; 
@@ -42,6 +108,11 @@ glRotatef(SUDUT_KANAN,0.0f,0.0f,1.0f);
       Silinder2(DMT_ROD,1.67f); 
 glRotatef(SUDUT_TENGAH-SUDUT_KANAN,0.0f,0.0f,1.0f); 
       Silinder2(DMT_ROD,TENGAH_ROD); 
+ glColor3f(1.0f,1.0f,0.0f); 
+      glTranslatef(TENGAH_ROD,0.0f,0.0f); 
+      glRotatef(-SUDUT_TENGAH,0.0f,0.0f,1.0f); 
+      glScalef(0.3f,DMT_ROD,0.25f); 
+      jok(); 
 
 	    glPushMatrix(); 
          glTranslatef(0.0f,0.0f,-OFSET_RODA); 
