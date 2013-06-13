@@ -135,6 +135,7 @@ void Silinder2(GLfloat radius,GLfloat length)
       Silinder1(radius,length); 
    glPopMatrix(); 
 } 
+
 void rangka() 
 { 
    glColor3f(1.0f,0.0f,0.0f); 
