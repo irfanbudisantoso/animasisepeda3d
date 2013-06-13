@@ -46,7 +46,6 @@ void pedal()
    glColor3f(1.0f,0.0f,0.0f); 
 } 
 
-
 void jok() 
 { 
    glBegin(GL_POLYGON); 
@@ -301,7 +300,10 @@ void display(void)
       glPushMatrix(); 
          glTranslatef(xpos,0.0f,zpos); 
          glRotatef(direction,0.0f,1.0f,0.0f); 
-         rangka();    
+         rangka(); 
+
+		 pedal();
+
       glPopMatrix(); 
    glPopMatrix(); 
    glMatrixMode(GL_MODELVIEW); 
