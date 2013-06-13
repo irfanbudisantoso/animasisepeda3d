@@ -1,4 +1,52 @@
 #include "sepeda.h" 
+void pedal() 
+{ 
+   glColor3f(0.0f,0.0f,1.0f); 
+
+   glPushMatrix(); 
+      glTranslatef(0.0f,0.0f,0.105f); 
+      glRotatef(-sudutpedal,0.0f,0.0f,1.0f); 
+      glTranslatef(0.25f,0.0f,0.0f); 
+
+      glPushMatrix(); 
+         glScalef(0.5f,0.1f,0.1f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+
+      glPushMatrix(); 
+         glTranslatef(0.25f,0.0f,0.15f); 
+         glRotatef(sudutpedal,0.0f,0.0f,1.0f); 
+         glScalef(0.2f,0.02f,0.3f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+
+   glPopMatrix(); 
+
+   glPushMatrix(); 
+      glTranslatef(0.0f,0.0f,-0.23f); 
+      glRotatef(180.0f-sudutpedal,0.0f,0.0f,1.0f); 
+      glTranslatef(0.25f,0.0f,0.0f); 
+
+
+      glPushMatrix(); 
+         glScalef(0.5f,0.1f,0.1f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+
+
+      glPushMatrix(); 
+         glTranslatef(0.25f,0.0f,-0.15f); 
+         glRotatef(sudutpedal-180.0f,0.0f,0.0f,1.0f); 
+         glScalef(0.2f,0.02f,0.3f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+
+   glPopMatrix(); 
+
+   glColor3f(1.0f,0.0f,0.0f); 
+} 
+
+
 void jok() 
 { 
    glBegin(GL_POLYGON); 
