@@ -302,6 +302,7 @@ void display(void)
          glTranslatef(xpos,0.0f,zpos); 
          glRotatef(direction,0.0f,1.0f,0.0f); 
          rangka(); 
+         jok();
 
 		 pedal();
 
