@@ -184,6 +184,22 @@ glColor3f(1.0f,0.0f,0.0f);
 
       glPopMatrix();   
    glPopMatrix(); 
+   // gear belakang hendra
+   
+
+   glPushMatrix();
+      glTranslatef(-(PHB_B+DMT_RODA+LB_BAN),0.0f,0.0f);
+         glRotatef(-2*sudutpedal,0.0f,0.0f,1.0f);
+        //gambar ban belakang 
+         ban();
+         glColor3f(0.0f,1.0f,0.0f);
+            gear(0.03f,0.15f,0.03f,20,0.03f);
+         glColor3f(1.0f,0.0f,0.0f);
+      glPopMatrix();
+      glRotatef(SUDUT_KIRI,0.0f,0.0f,1.0f);
+
+   
+   
 } 
 void gear( GLfloat inner_radius, GLfloat outer_radius, GLfloat width, 
         GLint teeth, GLfloat tooth_depth ) 
@@ -274,6 +290,46 @@ void gear( GLfloat inner_radius, GLfloat outer_radius, GLfloat width,
     } 
     glEnd(); 
 } 
+
+// hendra --ban--
+
+void ban(void)
+{
+   int i;
+   //   gambar rim
+   glColor3f(0.5f,1.0f,1.0f);
+   glutSolidTorus(0.06f,0.92f,4,30);
+   //   gambar silinder bagian tengah
+   //   panjang silinder
+   glColor3f(1.0f,1.0f,0.5f);
+   glPushMatrix();
+      glTranslatef(0.0f,0.0f,-0.06f);
+      Silinder1(0.02f,0.12f);
+   glPopMatrix();
+   glutSolidTorus(0.02f,0.02f,3,20);
+
+   //   gambar jari jari
+   glColor3f(1.0f,1.0f,1.0f);
+   for(i=0;i<JML_JARI2;++i)
+   {
+      glPushMatrix();
+         glRotatef(i*SUDUT_JARI2,0.0f,0.0f,1.0f);
+         glBegin(GL_LINES);
+            glVertex3f(0.0f,0.02f,0.0f);
+            glVertex3f(0.0f,0.86f,0.0f);
+         glEnd();
+      glPopMatrix();
+   }
+
+   //   gambar ban
+   glColor3f(0.0f,0.0f,0.0f);
+   glutSolidTorus(LB_BAN-0.03,DMT_RODA,10,30);
+   glColor3f(1.0f,0.0f,0.0f);
+}
+
+
+
+
 void init() 
 { 
    GLfloat mat_specular[]={1.0,1.0,1.0,1.0}; 
