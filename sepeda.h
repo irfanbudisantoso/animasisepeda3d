@@ -54,3 +54,4 @@ void silinder2(GLfloat radius,GLfloat length);
 void help(void); 
 void jok(void);
 void pedal(void);
+void rantai(void);
