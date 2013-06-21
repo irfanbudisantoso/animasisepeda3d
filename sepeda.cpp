@@ -1,4 +1,31 @@
 #include "sepeda.h" 
+void rantai() 
+{ 
+   GLfloat depth; 
+   static int mode=0; 
+
+   glColor3f(0.0f,1.0f,0.0f); 
+   glEnable(GL_LINE_STIPPLE); 
+   mode=(mode+1)%2; 
+    
+   if(mode==0 && spid>0) 
+      glLineStipple(1,0x1c47); 
+   else if(mode==1 && spid>0) 
+      glLineStipple(1,0x00FF); 
+    
+   glBegin(GL_LINES); 
+   for(depth=0.06f;depth<=0.12f;depth+=0.01f) 
+   { 
+      glVertex3f(-1.6f,0.15f,DMT_ROD); 
+      glVertex3f(0.0f,0.3f,depth); 
+       
+      glVertex3f(-1.6f,-0.15f,DMT_ROD); 
+      glVertex3f(0.0f,-0.3f,depth); 
+   } 
+   glEnd(); 
+   glDisable(GL_LINE_STIPPLE); 
+} 
+
 void pedal() 
 { 
    glColor3f(0.0f,0.0f,1.0f); 
