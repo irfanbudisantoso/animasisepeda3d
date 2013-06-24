@@ -1,4 +1,51 @@
 #include "sepeda.h" 
+void pedal() 
+{ 
+   glColor3f(0.0f,0.0f,1.0f); 
+
+   glPushMatrix(); 
+      glTranslatef(0.0f,0.0f,0.105f); 
+      glRotatef(-sudutpedal,0.0f,0.0f,1.0f); 
+      glTranslatef(0.25f,0.0f,0.0f); 
+
+      glPushMatrix(); 
+         glScalef(0.5f,0.1f,0.1f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+
+      glPushMatrix(); 
+         glTranslatef(0.25f,0.0f,0.15f); 
+         glRotatef(sudutpedal,0.0f,0.0f,1.0f); 
+         glScalef(0.2f,0.02f,0.3f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+
+   glPopMatrix(); 
+
+   glPushMatrix(); 
+      glTranslatef(0.0f,0.0f,-0.23f); 
+      glRotatef(180.0f-sudutpedal,0.0f,0.0f,1.0f); 
+      glTranslatef(0.25f,0.0f,0.0f); 
+
+
+      glPushMatrix(); 
+         glScalef(0.5f,0.1f,0.1f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+
+
+      glPushMatrix(); 
+         glTranslatef(0.25f,0.0f,-0.15f); 
+         glRotatef(sudutpedal-180.0f,0.0f,0.0f,1.0f); 
+         glScalef(0.2f,0.02f,0.3f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+
+   glPopMatrix(); 
+
+   glColor3f(1.0f,0.0f,0.0f); 
+} 
+
 void jok() 
 { 
    glBegin(GL_POLYGON); 
@@ -113,7 +160,6 @@ glRotatef(SUDUT_TENGAH-SUDUT_KANAN,0.0f,0.0f,1.0f);
       glRotatef(-SUDUT_TENGAH,0.0f,0.0f,1.0f); 
       glScalef(0.3f,DMT_ROD,0.25f); 
       jok(); 
-<<<<<<< HEAD
 glColor3f(1.0f,0.0f,0.0f); 
    glPopMatrix(); 
 
@@ -129,12 +175,6 @@ glColor3f(1.0f,0.0f,0.0f);
          Silinder2(DMT_ROD,DMT_RODA+LB_BAN); 
       glPopMatrix(); 
    glPopMatrix();
-
-
-
-
-=======
->>>>>>> 0aaa3b16f4d1169b43b835cb3e3d7a2c88225f8d
 
 	    glPushMatrix(); 
          glTranslatef(0.0f,0.0f,-OFSET_RODA); 
@@ -260,7 +300,10 @@ void display(void)
       glPushMatrix(); 
          glTranslatef(xpos,0.0f,zpos); 
          glRotatef(direction,0.0f,1.0f,0.0f); 
-         rangka();    
+         rangka(); 
+
+		 pedal();
+
       glPopMatrix(); 
    glPopMatrix(); 
    glMatrixMode(GL_MODELVIEW); 
