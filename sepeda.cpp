@@ -1,5 +1,14 @@
 #include "sepeda.h" 
 
+void tutuplas() 
+{ 
+   glPushMatrix(); 
+   glColor3f(1.0f,0.0f,0.0f); 
+glScalef(0.025f,0.025f,0.025f); 
+glRotatef(90.0f,0.0f,90.0f,0.0f); 
+glutSolidSphere(2.0, 2.0, 100.0);
+   glPopMatrix(); 
+} 
 void rantai() 
 { 
    GLfloat depth; 
@@ -92,6 +101,7 @@ void jok()
 
    glEnd();
 } 
+
 void pedal() 
 { 
    glColor3f(0.0f,0.0f,1.0f); 
@@ -153,26 +163,222 @@ void Silinder2(GLfloat radius,GLfloat length)
       Silinder1(radius,length); 
    glPopMatrix(); 
 } 
+void ban(void) 
+{ 
+   int i; 
+   //   Pelek 
+   glColor3f(0.5f,1.0f,1.0f); 
+   glutSolidTorus(0.06f,0.92f,4,30); 
+   //   Silinder tengah
+   glColor3f(1.0f,1.0f,0.5f); 
+   glPushMatrix(); 
+      glTranslatef(0.0f,0.0f,-0.06f); 
+      Silinder1(0.02f,0.12f); 
+   glPopMatrix(); 
+   glutSolidTorus(0.02f,0.02f,3,20); 
+
+   //   Jari Jari 
+   glColor3f(1.0f,1.0f,1.0f); 
+   for(i=0;i<JML_JARI2;++i) 
+   { 
+      glPushMatrix(); 
+         glRotatef(i*SUDUT_JARI2,0.0f,0.0f,1.0f); 
+         glBegin(GL_LINES); 
+            glVertex3f(0.0f,0.02f,0.0f); 
+            glVertex3f(0.0f,0.86f,0.0f); 
+         glEnd(); 
+      glPopMatrix(); 
+   } 
+
+   //   BAN 
+   glColor3f(0.0f,0.0f,0.5f); 
+   glutSolidTorus(LB_BAN-0.03,DMT_RODA,10,30); 
+   glColor3f(1.0f,0.0f,0.0f); 
+} 
+
 void rangka() 
 { 
    glColor3f(1.0f,0.0f,0.0f); 
-   glPushMatrix();
-   glPushMatrix(); 
-   glColor3f(0.2f,0.7f,0.2f); 
-   glPushMatrix(); 
+   glPushMatrix();  
+      glPushMatrix(); 
+         glColor3f(0.0f,1.0f,0.0f); 
+         glPushMatrix(); 
             glTranslatef(0.0f,0.0f,0.06f); 
             glRotatef(-2*sudutpedal,0.0f,0.0f,1.0f); 
             gear(0.08f,0.3f,0.03f,30,0.03f); 
          glPopMatrix(); 
-		 glColor3f(1.0f,0.0f,0.0f); //warna rumah 
+         glColor3f(1.0f,0.0f,0.0f); //warna rumah 
          glTranslatef(0.0f,0.0f,-0.2f); 
          Silinder1(0.08f,0.32f); 
       glPopMatrix(); 
-	    glPushMatrix(); 
+//sambungan  fork belakang edit lagi 
+	  glPushMatrix(); 
+	 glColor3f(1.0f,0.0f,0.0f);
+         glTranslatef(-0.87f,0.85f,-0.16f); 
+         Silinder1(0.05f,0.32f); 
+      glPopMatrix();
+//TUTUP LAS SAMBUNGAN belakang kanan
+glPushMatrix();
+glTranslatef(-0.87f, 0.85f, 0.16f);
+tutuplas();
+glPopMatrix();
+
+//TUTUP LAS SAMBUNGAN belakang kiri
+glPushMatrix();
+glTranslatef(-0.87f, 0.85f, -0.16f);
+tutuplas();
+glPopMatrix();
+//rekaan sambungan  fork belakang tengah 
+glPushMatrix(); 
+glColor3f(1.0f,0.0f,0.0f); 
+glTranslatef(-0.475f,0.0f,-0.16f); 
+Silinder1(0.05f,0.32f); 
+glPopMatrix();
+//TUTUP LAS fork belakang tengah  kanan
+glPushMatrix();
+glTranslatef(-0.475f,0.0f,-0.16f);
+tutuplas();
+glPopMatrix();
+//TUTUP LAS fork belakang tengah  kiri
+	  glPushMatrix();
+glTranslatef(-0.475f,0.0f,0.16f);
+tutuplas();
+glPopMatrix();
+//TUTUP LAS dekat pedal kiri
+	  glPushMatrix();
+glTranslatef(0.0f,0.0f,-0.2f);
+glScalef(0.04f,0.04f,0.04f); 
+glRotatef(90.0f,0.0f,90.0f,0.0f); 
+glutSolidSphere(2.0, 2.0, 100.0);
+glPopMatrix();
+//TUTUP LAS dekat pedal kanan
+	  glPushMatrix();
+glTranslatef(0.0f,0.0f,0.1f);
+glScalef(0.04f,0.04f,0.04f); 
+glRotatef(90.0f,0.0f,90.0f,0.0f); 
+glutSolidSphere(2.0, 2.0, 100.0);
+glPopMatrix();
+glRotatef(SUDUT_KANAN,0.0f,0.0f,1.0f); 
+Silinder2(DMT_ROD,1.67f); //rangka ubahan
+glRotatef(SUDUT_TENGAH-SUDUT_KANAN,0.0f,0.0f,1.0f); 
+Silinder2(DMT_ROD,TENGAH_ROD); 
+      glColor3f(1.0f,1.0f,0.0f); 
+      glTranslatef(TENGAH_ROD,0.0f,0.0f); 
+      glRotatef(-SUDUT_TENGAH,0.0f,0.0f,1.0f); 
+      glScalef(0.3f,DMT_ROD,0.25f); 
+      jok(); 
+      glColor3f(1.0f,0.0f,0.0f); 
+   glPopMatrix(); 
+   glPushMatrix(); 
+      glRotatef(-180.0f,0.0f,1.0f,0.0f); 
+      Silinder2(DMT_ROD,PHB_B); 
+      glPushMatrix(); 
+         glTranslatef(0.5f,0.0f,OFSET_RODA); 
+         Silinder2(DMT_ROD,DMT_RODA+LB_BAN); 
+      glPopMatrix(); 
+      glPushMatrix(); 
+         glTranslatef(0.5f,0.0f,-OFSET_RODA); 
+         Silinder2(DMT_ROD,DMT_RODA+LB_BAN); 
+      glPopMatrix(); 
+   glPopMatrix(); 
+   glPushMatrix(); 
+      glTranslatef(-(PHB_B+DMT_RODA+LB_BAN),0.0f,0.0f); 
+      glPushMatrix(); 
+         glRotatef(-2*sudutpedal,0.0f,0.0f,1.0f); 
+         ban(); 
+         glColor3f(0.0f,1.0f,0.0f); 
+            gear(0.03f,0.15f,0.03f,20,0.03f); 
+         glColor3f(1.0f,0.0f,0.0f); 
+      glPopMatrix(); 
+      glRotatef(SUDUT_KIRI,0.0f,0.0f,1.0f); 
+      glPushMatrix(); 
          glTranslatef(0.0f,0.0f,-OFSET_RODA); 
          Silinder2(DMT_ROD,LEN_RODA); 
       glPopMatrix(); 
-      glPopMatrix();   
+      glPushMatrix(); 
+         glTranslatef(0.0f,0.0f,OFSET_RODA); 
+         Silinder2(DMT_ROD,LEN_RODA); 
+      glPopMatrix(); 
+      glTranslatef(LEN_RODA,0.0f,0.0f); 
+      Silinder2(DMT_ROD,ENGSEL_ROD); 
+       glTranslatef(ENGSEL_ROD,0.0f,0.0f); 
+      glRotatef(-SUDUT_KIRI,0.0f,0.0f,1.0f); 
+      Silinder2(DMT_ROD,LEN_ATAS); 
+      glTranslatef(LEN_ATAS,0.0f,0.0f); 
+      glRotatef(-FRONT_INCLINE,0.0f,0.0f,1.0f); 
+      glPushMatrix(); 
+         glTranslatef(-0.1f,0.0f,0.0f); 
+         Silinder2(DMT_ROD,0.45f); 
+      glPopMatrix(); 
+      glPushMatrix(); 
+         glRotatef(-stir,1.0f,0.0f,0.0f); 
+         glTranslatef(-0.3f,0.0f,0.0f); 
+         glPushMatrix(); 
+            glRotatef(FRONT_INCLINE,0.0f,0.0f,1.0f); 
+
+            glPushMatrix(); 
+               glTranslatef(0.0f,0.0f,-HANDEL_ROD/2); 
+               Silinder1(DMT_ROD,HANDEL_ROD); 
+            glPopMatrix(); 
+
+            glPushMatrix(); 
+               glColor3f(1.0f,1.0f,0.0f); 
+               glTranslatef(0.0f,0.0f,-HANDEL_ROD/2); 
+               Silinder1(0.07f,HANDEL_ROD/4); 
+               glTranslatef(0.0f,0.0f,HANDEL_ROD*3/4); 
+               Silinder1(0.07f,HANDEL_ROD/4); 
+               glColor3f(1.0f,0.0f,0.0f); 
+            glPopMatrix(); 
+         glPopMatrix(); 
+         glPushMatrix(); 
+            Silinder2(DMT_ROD,ENGSEL_ROD); 
+            glTranslatef(ENGSEL_ROD,0.0f,0.0f); 
+            glRotatef(SUDUT_ENGSEL,0.0f,0.0f,1.0f); 
+            glPushMatrix(); 
+               glTranslatef(0.0f,0.0f,OFSET_RODA); 
+               Silinder2(DMT_ROD,ENGSEL_RODS); 
+            glPopMatrix(); 
+            glPushMatrix(); 
+               glTranslatef(0.0f,0.0f,-OFSET_RODA); 
+               Silinder2(DMT_ROD,ENGSEL_RODS); 
+            glPopMatrix();
+//rekaan tutup fork depan
+glPushMatrix(); 
+glColor3f(1.0f,0.0f,0.0f); 
+glTranslatef(0.0f,0.0f,-0.16f); 
+Silinder1(0.05f,0.32f); 
+glPopMatrix();
+//TUTUP LAS SAMBUNGAN FORK KIRI
+	  glPushMatrix();
+glTranslatef(0.0f, 0.0f, -0.16f);
+tutuplas();
+glPopMatrix();
+//TUTUP LAS SAMBUNGAN FORK KANAN
+	  glPushMatrix();
+glTranslatef(0.0f, 0.0f, 0.16f);
+tutuplas();
+glPopMatrix();
+
+//tTUTUP LAS handle kiri
+	  glPushMatrix();
+glTranslatef(-0.7f,0.09f,0.6f);
+glScalef(0.03f,0.04f,0.04f); 
+glRotatef(90.0f,0.0f,90.0f,0.0f); 
+glutSolidSphere(2.0, 2.0, 100.0);
+glPopMatrix();
+//TUTUP LAS handle kiri
+	  glPushMatrix();
+glTranslatef(-0.7f,0.09f,-0.6f);
+glScalef(0.03f,0.04f,0.04f); 
+glRotatef(90.0f,0.0f,90.0f,0.0f); 
+glutSolidSphere(2.0, 2.0, 100.0);
+glPopMatrix();
+            glTranslatef(ENGSEL_RODS,0.0f,0.0f); 
+            glRotatef(-2*sudutpedal,0.0f,0.0f,1.0f); 
+            ban(); 
+
+         glPopMatrix(); 
+      glPopMatrix(); 
    glPopMatrix(); 
 } 
 void gear( GLfloat inner_radius, GLfloat outer_radius, GLfloat width, 
@@ -295,7 +501,9 @@ void display(void)
       glPushMatrix(); 
          glTranslatef(xpos,0.0f,zpos); 
          glRotatef(direction,0.0f,1.0f,0.0f); 
-         rangka();    
+         rangka(); 
+		  rantai(); 
+         pedal();
       glPopMatrix(); 
    glPopMatrix(); 
    glMatrixMode(GL_MODELVIEW); 
