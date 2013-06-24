@@ -52,4 +52,7 @@ void gear( GLfloat inner_radius, GLfloat outer_radius, GLfloat width,GLint teeth
 void silinder1(GLfloat radius,GLfloat length); 
 void silinder2(GLfloat radius,GLfloat length); 
 void help(void); 
+void pedal(void);  
+void jok(void);
+void rantai(void);
 

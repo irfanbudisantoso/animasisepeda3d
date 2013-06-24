@@ -1,4 +1,135 @@
 #include "sepeda.h" 
+
+void rantai() 
+{ 
+   GLfloat depth; 
+   static int mode=0; 
+
+   glColor3f(0.0f,1.0f,0.0f); 
+   glEnable(GL_LINE_STIPPLE); 
+   mode=(mode+1)%2; 
+    
+   if(mode==0 && spid>0) 
+      glLineStipple(1,0x1c47); 
+   else if(mode==1 && spid>0) 
+      glLineStipple(1,0x00FF); 
+    
+   glBegin(GL_LINES); 
+   for(depth=0.06f;depth<=0.12f;depth+=0.01f) 
+   { 
+      glVertex3f(-1.6f,0.15f,DMT_ROD); 
+      glVertex3f(0.0f,0.3f,depth); 
+       
+      glVertex3f(-1.6f,-0.15f,DMT_ROD); 
+      glVertex3f(0.0f,-0.3f,depth); 
+   } 
+   glEnd(); 
+   glDisable(GL_LINE_STIPPLE); 
+} 
+
+void jok() 
+{ 
+   glBegin(GL_POLYGON); 
+      glVertex3f(-0.1f, 1.0f, -0.5f); 
+      glVertex3f(   1.0f, 1.0f, -0.3f); 
+      glVertex3f( 1.0f, 1.0f,  0.3f); 
+      glVertex3f(-0.1f, 1.0f,  0.5f); 
+      glVertex3f(-0.5f, 1.0f,  1.0f); 
+      glVertex3f(-1.0f, 1.0f,  1.0f); 
+      glVertex3f(-1.0f, 1.0f, -1.0f); 
+      glVertex3f(-0.5f, 1.0f, -1.0f); 
+   glEnd(); 
+   glBegin(GL_POLYGON); 
+      glVertex3f(-0.1f, -1.0f, -0.5f); 
+      glVertex3f(   1.0f, -1.0f, -0.3f); 
+      glVertex3f( 1.0f, -1.0f,  0.3f); 
+      glVertex3f(-0.1f, -1.0f,  0.5f); 
+      glVertex3f(-0.5f, -1.0f,  1.0f); 
+      glVertex3f(-1.0f, -1.0f,  1.0f); 
+      glVertex3f(-1.0f, -1.0f, -1.0f); 
+      glVertex3f(-0.5f, -1.0f, -1.0f); 
+   glEnd(); 
+   glBegin(GL_QUADS); 
+      glVertex3f(1.0f,1.0f,-0.3f); 
+      glVertex3f(1.0f,1.0f,0.3f); 
+      glVertex3f(1.0f,-1.0f,0.3f); 
+      glVertex3f(1.0f,-1.0f,-0.3f); 
+
+      glVertex3f(1.0f,1.0f,0.3f); 
+      glVertex3f(-0.1f,1.0f,0.5f); 
+      glVertex3f(-0.1f,-1.0f,0.5f); 
+      glVertex3f(1.0f,-1.0f,0.3f); 
+
+      glVertex3f(1.0f,1.0f,-0.3f); 
+      glVertex3f(-0.1f,1.0f,-0.5f); 
+      glVertex3f(-0.1f,-1.0f,-0.5f); 
+      glVertex3f(1.0f,-1.0f,-0.3f); 
+
+      glVertex3f(-0.1f,1.0f,0.5f); 
+      glVertex3f(-0.5f,1.0f,1.0f); 
+      glVertex3f(-0.5f,-1.0f,1.0f); 
+      glVertex3f(-0.1f,-1.0f,0.5f); 
+
+      glVertex3f(-0.1f,1.0f,-0.5f); 
+      glVertex3f(-0.5f,1.0f,-1.0f); 
+      glVertex3f(-0.5f,-1.0f,-1.0f); 
+      glVertex3f(-0.1f,-1.0f,-0.5f); 
+
+      glVertex3f(-0.5f,1.0f,1.0f); 
+      glVertex3f(-1.0f,1.0f,1.0f); 
+      glVertex3f(-1.0f,-1.0f,1.0f); 
+      glVertex3f(-0.5f,-1.0f,1.0f); 
+
+      glVertex3f(-0.5f,1.0f,-1.0f); 
+      glVertex3f(-1.0f,1.0f,-1.0f); 
+      glVertex3f(-1.0f,-1.0f,-1.0f); 
+      glVertex3f(-0.5f,-1.0f,-1.0f); 
+
+      glVertex3f(-1.0f,1.0f,1.0f); 
+      glVertex3f(-1.0f,1.0f,-1.0f); 
+      glVertex3f(-1.0f,-1.0f,-1.0f); 
+      glVertex3f(-1.0f,-1.0f,1.0f); 
+
+   glEnd();
+} 
+void pedal() 
+{ 
+   glColor3f(0.0f,0.0f,1.0f); 
+   glPushMatrix(); 
+      glTranslatef(0.0f,0.0f,0.105f); 
+      glRotatef(-sudutpedal,0.0f,0.0f,1.0f); 
+      glTranslatef(0.25f,0.0f,0.0f); 
+      glPushMatrix(); 
+         glScalef(0.5f,0.1f,0.1f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+      glPushMatrix(); 
+         glTranslatef(0.25f,0.0f,0.15f); 
+         glRotatef(sudutpedal,0.0f,0.0f,1.0f); 
+         glScalef(0.2f,0.02f,0.3f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+
+   glPopMatrix(); 
+   glPushMatrix(); 
+      glTranslatef(0.0f,0.0f,-0.23f); 
+      glRotatef(180.0f-sudutpedal,0.0f,0.0f,1.0f); 
+      glTranslatef(0.25f,0.0f,0.0f);  
+      glPushMatrix(); 
+         glScalef(0.5f,0.1f,0.1f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+      glPushMatrix(); 
+         glTranslatef(0.25f,0.0f,-0.15f); 
+         glRotatef(sudutpedal-180.0f,0.0f,0.0f,1.0f); 
+         glScalef(0.2f,0.02f,0.3f); 
+         glutSolidCube(1.0f); 
+      glPopMatrix(); 
+
+   glPopMatrix(); 
+
+   glColor3f(1.0f,0.0f,0.0f); 
+} 
 GLfloat angleSum(GLfloat a, GLfloat b) 
 { 
   a += b; 
@@ -133,6 +264,8 @@ void gear( GLfloat inner_radius, GLfloat outer_radius, GLfloat width,
     } 
     glEnd(); 
 } 
+
+
 void init() 
 { 
    GLfloat mat_specular[]={1.0,1.0,1.0,1.0}; 
@@ -148,6 +281,8 @@ void init()
    glEnable(GL_COLOR_MATERIAL); 
    glEnable(GL_DEPTH_TEST); 
 }  
+
+
 void display(void) 
 { 
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
