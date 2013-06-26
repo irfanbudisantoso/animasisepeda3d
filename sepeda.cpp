@@ -24,7 +24,7 @@ GLfloat Abs(GLfloat a)
    if(a < 0.0f) 
       return -a; 
    else 
-      return a; 
+      return a;  
 } 
 GLfloat degrees(GLfloat a) 
 { 

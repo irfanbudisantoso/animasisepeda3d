@@ -33,7 +33,7 @@
 GLfloat sudutpedal, spid, stir; 
 GLfloat camx,camy,camz; 
 GLfloat anglex,angley,anglez; 
-
+ 
 int prevx,prevy; 
 GLenum Mouse; 
  
