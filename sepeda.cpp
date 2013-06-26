@@ -1,4 +1,39 @@
 #include "sepeda.h" 
+void updateScene() 
+{ 
+   GLfloat xDelta, zDelta; 
+   GLfloat rotation; 
+   GLfloat sin_stir, cos_stir; 
+   if (-PLUS_SPID < spid && spid < PLUS_SPID) return; 
+
+   if(spid < 0.0f) 
+         sudutpedal = spid = 0.0f; 
+
+   xDelta = spid*cos(radians(direction + stir)); 
+   zDelta = spid*sin(radians(direction + stir)); 
+   xpos += xDelta; 
+   zpos -= zDelta; 
+   sudutpedal = degrees(angleSum(radians(sudutpedal), spid/DMT_RODA)); 
+   sin_stir = sin(radians(stir)); 
+   cos_stir = cos(radians(stir)); 
+   rotation = atan2(spid * sin_stir, PJG_SPD + spid * cos_stir); 
+   direction = degrees(angleSum(radians(direction),rotation)); 
+} 
+GLfloat Abs(GLfloat a) 
+{ 
+   if(a < 0.0f) 
+      return -a; 
+   else 
+      return a; 
+} 
+GLfloat degrees(GLfloat a) 
+{ 
+   return a*180.0f/PI; 
+} 
+GLfloat radians(GLfloat a) 
+{ 
+   return a*PI/180.0f; 
+} 
 
 void tutuplas() 
 { 
@@ -101,7 +136,6 @@ void jok()
 
    glEnd();
 } 
-
 void pedal() 
 { 
    glColor3f(0.0f,0.0f,1.0f); 
@@ -510,7 +544,13 @@ void display(void)
    glLoadIdentity(); 
    gluLookAt(camx,camy,camz,  camx,0.0,0.0,  0.0,1.0,0.0); 
    glutSwapBuffers(); 
+}
+ void idle(void) 
+{ 
+   updateScene(); 
+   glutPostRedisplay(); 
 } 
+
 void special(int key,int x,int y) 
 { 
    switch(key) 
@@ -551,14 +591,116 @@ void reshape(int w,int h)
    glLoadIdentity(); 
    gluLookAt(camx,camy,camz,  0.0,0.0,0.0,  0.0,1.0,0.0); 
 } 
+void keyboard(unsigned char key,int x,int y) 
+{ 
+   GLfloat r=0.0f; 
 
+   switch(key) 
+   { 
+      case 'r': 
+         reset(); 
+         break; 
+      case 'a': 
+         if(stir < BTS_HENDEL) 
+               stir += PLUS_STIR; 
+         break; 
+      case 'd': 
+         if(stir > -BTS_HENDEL) 
+            stir -= PLUS_STIR; 
+         break; 
+      case '+': 
+         spid += PLUS_SPID; 
+         break; 
+      case '-': 
+         spid -= PLUS_SPID; 
+         break;    
+      case 27: 
+         exit(1); 
+   } 
+    
+   sudutpedal += spid; 
+   if(spid < 0.0f) 
+      spid = 0.0f; 
+   if(sudutpedal < 0.0f) 
+      sudutpedal = 0.0f; 
+   if(sudutpedal >= 360.0f) 
+      sudutpedal -= 360.0f; 
+
+   glutPostRedisplay(); 
+} 
+void mouse(int button,int state,int x,int y) 
+{ 
+   switch(button) 
+   { 
+      case GLUT_LEFT_BUTTON: 
+         if(state==GLUT_DOWN) 
+         { 
+            Mouse=GLUT_DOWN; 
+            prevx=x; 
+            prevy=y; 
+         } 
+         if(state==GLUT_UP) 
+         { 
+            Mouse=GLUT_UP; 
+         } 
+         break; 
+      case GLUT_RIGHT_BUTTON: 
+         break; 
+   } 
+   glutPostRedisplay(); 
+} 
+
+void passive(int x,int y) 
+{ 
+} 
+
+void gerak(int x,int y) 
+{ 
+   if(Mouse==GLUT_DOWN)    
+   { 
+      int deltax,deltay; 
+      deltax=prevx-x; 
+      deltay=prevy-y; 
+      anglex += 0.5*deltax; 
+      angley += 0.5*deltay; 
+      if(deltax!=0 && deltay!=0) 
+         anglez += 0.5*sqrt(deltax*deltax + deltay*deltay); 
+
+      if(anglex < 0) 
+         anglex+=360.0; 
+      if(angley < 0) 
+         angley+=360.0; 
+      if(anglez < 0) 
+         anglez += 360.0; 
+
+      if(anglex > 360.0) 
+         anglex-=360.0; 
+      if(angley > 360.0) 
+         angley-=360.0; 
+      if(anglez > 360.0) 
+         anglez-=360.0; 
+   } 
+   else 
+   { 
+      Mouse=GLUT_UP; 
+   } 
+   prevx=x; 
+   prevy=y; 
+   glutPostRedisplay();    
+} 
 void glSetupFuncs(void) 
 { 
    glutDisplayFunc(display); 
    glutReshapeFunc(reshape); 
+   glutIdleFunc(idle); 
    glutSpecialFunc(special); 
+   glutKeyboardFunc(keyboard); 
+   glutMouseFunc(mouse); 
+   glutMotionFunc(gerak); 
+   glutPassiveMotionFunc(passive); 
    glutSetCursor(GLUT_CURSOR_CROSSHAIR); 
 } 
+
 
 void help(void) 
 { 
@@ -566,6 +708,7 @@ void help(void)
    printf("IF17K - KOMPUTER GRAFIKA\n");  
   
 } 
+
 
 void main(int argc,char *argv[]) 
 { 
