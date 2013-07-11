@@ -3,6 +3,7 @@
 #include<stdio.h> 
 #include<stdlib.h> 
 #include<math.h>
+
 #define ENGSEL_ROD      0.7f 
 #define ENGSEL_RODS      1.12f 
 #define SUDUT_ENGSEL      8.0f 
@@ -29,11 +30,19 @@
 #define BTS_HENDEL   70.0f 
 #define PLUS_STIR   2.0f 
 #define PLUS_SPID      0.05f 
+
+////// Defines
+#define BITMAP_ID 0x4D42		
+#define MAP_X	32				
+#define MAP_Z	32				
+#define MAP_SCALE	20.0f		
+#define PI		3.14159
+
    
 GLfloat sudutpedal, spid, stir; 
 GLfloat camx,camy,camz; 
 GLfloat anglex,angley,anglez; 
- 
+
 int prevx,prevy; 
 GLenum Mouse; 
  
@@ -55,4 +64,4 @@ void help(void);
 void pedal(void);  
 void jok(void);
 void rantai(void);
-
+void alas(void);  

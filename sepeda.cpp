@@ -1,4 +1,27 @@
 #include "sepeda.h" 
+void alas(void) 
+{ 
+      GLfloat i; 
+      glColor3f(0.0f,1.0f,0.0f); 
+
+      /************************************ 
+      *   Draw the ground for the cycle 
+      *   Looks incomplete with it!Don't 
+      *   forget to define the normal 
+      *   vectors for the vertices. 
+      *   gotta fix this bug! 
+      ************************************/ 
+      glBegin(GL_LINES); 
+      for(i=-100.0f ; i<100.0f ; i += 1.0f) 
+      { 
+         glVertex3f(-100.0f,-DMT_RODA,i); 
+         glVertex3f( 100.0f,-DMT_RODA,i); 
+         glVertex3f(i,-DMT_RODA,-100.0f); 
+         glVertex3f(i,-DMT_RODA,100.0f); 
+      } 
+      glEnd(); 
+} 
+
 void updateScene() 
 { 
    GLfloat xDelta, zDelta; 
@@ -24,7 +47,7 @@ GLfloat Abs(GLfloat a)
    if(a < 0.0f) 
       return -a; 
    else 
-      return a;  
+      return a; 
 } 
 GLfloat degrees(GLfloat a) 
 { 
@@ -531,13 +554,15 @@ void display(void)
    glPushMatrix();    
       glRotatef(angley,1.0f,0.0f,0.0f); 
       glRotatef(anglex,0.0f,1.0f,0.0f); 
-      glRotatef(anglez,0.0f,0.0f,1.0f); 
+      glRotatef(anglez,0.0f,0.0f,1.0f);
+	  alas();
       glPushMatrix(); 
          glTranslatef(xpos,0.0f,zpos); 
          glRotatef(direction,0.0f,1.0f,0.0f); 
          rangka(); 
 		  rantai(); 
          pedal();
+		 
       glPopMatrix(); 
    glPopMatrix(); 
    glMatrixMode(GL_MODELVIEW); 
