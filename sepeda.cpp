@@ -34,6 +34,7 @@ void updateScene()
    rotation = atan2(spid * sin_stir, PJG_SPD + spid * cos_stir); 
    direction = degrees(angleSum(radians(direction),rotation)); 
 } 
+
 GLfloat Abs(GLfloat a) 
 { 
    if(a < 0.0f) 
@@ -552,7 +553,7 @@ void display(void)
          glTranslatef(xpos,0.0f,zpos); 
          glRotatef(direction,0.0f,1.0f,0.0f); 
          rangka(); 
-		  rantai(); 
+		 rantai(); 
          pedal();
 		 
       glPopMatrix(); 
@@ -590,12 +591,14 @@ void special(int key,int x,int y)
 void reset() 
 { 
    anglex=angley=anglez=0.0f; 
+   sudutpedal=stir=1.0f; 
    Mouse=GLUT_UP; 
+   sudutpedal=spid=stir=0.0f; 
    camx=camy=1.0f; 
    camz=5.0f; 
    xpos=zpos=0.0f; 
    direction=-10.0f; 
-} 
+}
 //main CODE
 
 void reshape(int w,int h) 
@@ -723,8 +726,14 @@ void help(void)
 { 
    printf("ANIMASI SEPEDA 3D\n"); 
    printf("IF17K - KOMPUTER GRAFIKA\n");  
-  
-} 
+   printf(" SHIFT '+' : Menjalankan dan menambah kecepatan\n"); 
+   printf("       '-' : Untuk mengurangi kecepatan dan Menghentikan sepeda\n"); 
+   printf("       'd' : Menggerakkan Setang Ke Kanan\n"); 
+   printf("       'a' : Menggerakkan Setang Ke Kiri Jam\n"); 
+   printf("       'r' : Untuk Reset Layar\n"); 
+   printf("		  Arrow Untuk Menggerakkan camera\n"); 
+   printf("       Mouse Untuk Menggerakkan scene\n"); 
+}  
 
 
 void main(int argc,char *argv[]) 
