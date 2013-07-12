@@ -3,14 +3,6 @@ void alas(void)
 { 
       GLfloat i; 
       glColor3f(0.0f,1.0f,0.0f); 
-
-      /************************************ 
-      *   Draw the ground for the cycle 
-      *   Looks incomplete with it!Don't 
-      *   forget to define the normal 
-      *   vectors for the vertices. 
-      *   gotta fix this bug! 
-      ************************************/ 
       glBegin(GL_LINES); 
       for(i=-100.0f ; i<100.0f ; i += 1.0f) 
       { 
