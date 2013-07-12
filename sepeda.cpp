@@ -530,14 +530,19 @@ void init()
    GLfloat light_positional[]={1.0,1.0,1.0,0.0}; 
    GLfloat light_diffuse[]={1.0,1.0,1.0}; 
    reset(); 
-   glShadeModel(GL_SMOOTH);    
+   glShadeModel(GL_SMOOTH); 
+   glLightfv(GL_LIGHT0,GL_POSITION,light_directional); 
+   glLightfv(GL_LIGHT0,GL_AMBIENT,light_diffuse); 
+   glLightfv(GL_LIGHT0,GL_DIFFUSE,light_diffuse); 
+   glMaterialfv(GL_FRONT,GL_SHININESS,mat_shininess); 
+   glMaterialfv(GL_FRONT,GL_SPECULAR,mat_specular); 
+   glColorMaterial(GL_FRONT,GL_DIFFUSE); 
    glEnable(GL_NORMALIZE);
    glEnable(GL_LIGHTING); 
    glEnable(GL_LIGHT0); 
    glEnable(GL_COLOR_MATERIAL); 
    glEnable(GL_DEPTH_TEST); 
 }  
-
 
 void display(void) 
 { 
